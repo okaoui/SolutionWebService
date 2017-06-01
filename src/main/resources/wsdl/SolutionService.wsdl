@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="SolutionServiceService" targetNamespace="http://jaxws.developeinjava.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://jaxws.developeinjava.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://jaxws.developeinjava.com" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://jaxws.developeinjava.com">
+  <xs:element name="acceptSolution" type="tns:acceptSolution"/>
+  <xs:element name="acceptSolutionResponse" type="tns:acceptSolutionResponse"/>
+  <xs:element name="createAuthor" type="tns:createAuthor"/>
+  <xs:element name="createAuthorResponse" type="tns:createAuthorResponse"/>
+  <xs:element name="createSolution" type="tns:createSolution"/>
+  <xs:element name="createSolutionResponse" type="tns:createSolutionResponse"/>
+  <xs:element name="declineSolution" type="tns:declineSolution"/>
+  <xs:element name="declineSolutionResponse" type="tns:declineSolutionResponse"/>
+  <xs:element name="deleteSolution" type="tns:deleteSolution"/>
+  <xs:element name="deleteSolutionResponse" type="tns:deleteSolutionResponse"/>
+  <xs:element name="findSolutionsForProblem" type="tns:findSolutionsForProblem"/>
+  <xs:element name="findSolutionsForProblemResponse" type="tns:findSolutionsForProblemResponse"/>
+  <xs:element name="getAcceptedSolutionsForProblem" type="tns:getAcceptedSolutionsForProblem"/>
+  <xs:element name="getAcceptedSolutionsForProblemResponse" type="tns:getAcceptedSolutionsForProblemResponse"/>
+  <xs:element name="getDeclinedSolutionsForProblem" type="tns:getDeclinedSolutionsForProblem"/>
+  <xs:element name="getDeclinedSolutionsForProblemResponse" type="tns:getDeclinedSolutionsForProblemResponse"/>
+  <xs:element name="getPendingSolutionsForProblem" type="tns:getPendingSolutionsForProblem"/>
+  <xs:element name="getPendingSolutionsForProblemResponse" type="tns:getPendingSolutionsForProblemResponse"/>
+  <xs:element name="getSolutionById" type="tns:getSolutionById"/>
+  <xs:element name="getSolutionByIdResponse" type="tns:getSolutionByIdResponse"/>
+  <xs:element name="getTotalAcceptedSolutionsForProblem" type="tns:getTotalAcceptedSolutionsForProblem"/>
+  <xs:element name="getTotalAcceptedSolutionsForProblemResponse" type="tns:getTotalAcceptedSolutionsForProblemResponse"/>
+  <xs:element name="getTotalDeclinedSolutionsForProblem" type="tns:getTotalDeclinedSolutionsForProblem"/>
+  <xs:element name="getTotalDeclinedSolutionsForProblemResponse" type="tns:getTotalDeclinedSolutionsForProblemResponse"/>
+  <xs:element name="getTotalPendingSolutionsForProblem" type="tns:getTotalPendingSolutionsForProblem"/>
+  <xs:element name="getTotalPendingSolutionsForProblemResponse" type="tns:getTotalPendingSolutionsForProblemResponse"/>
+  <xs:element name="updateSolution" type="tns:updateSolution"/>
+  <xs:element name="updateSolutionResponse" type="tns:updateSolutionResponse"/>
+  <xs:complexType name="updateSolution">
+    <xs:sequence>
+      <xs:element name="sid" type="xs:long"/>
+      <xs:element name="aid" type="xs:long"/>
+      <xs:element minOccurs="0" name="attachments" type="tns:attachments"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="attachments">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="attachment" type="tns:attachment"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="attachment">
+    <xs:sequence>
+      <xs:element name="attId" type="xs:long"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="filename" type="xs:string"/>
+      <xs:element minOccurs="0" name="filepath" type="xs:string"/>
+      <xs:element name="sid" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateSolutionResponse">
+    <xs:sequence>
+      <xs:element name="updated" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteSolution">
+    <xs:sequence>
+      <xs:element name="sid" type="xs:long"/>
+      <xs:element name="aid" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteSolutionResponse">
+    <xs:sequence>
+      <xs:element name="deleted" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="acceptSolution">
+    <xs:sequence>
+      <xs:element name="sid" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="acceptSolutionResponse">
+    <xs:sequence>
+      <xs:element name="accepted" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTotalDeclinedSolutionsForProblem">
+    <xs:sequence>
+      <xs:element name="pid" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTotalDeclinedSolutionsForProblemResponse">
+    <xs:sequence>
+      <xs:element name="total" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createAuthor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="firstname" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastname" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="occupation" type="xs:string"/>
+      <xs:element minOccurs="0" name="mobile" type="xs:string"/>
+      <xs:element minOccurs="0" name="birthday" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createAuthorResponse">
+    <xs:sequence>
+      <xs:element name="aid" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findSolutionsForProblem">
+    <xs:sequence>
+      <xs:element name="pid" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findSolutionsForProblemResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="solutions" type="tns:solutions"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="solutions">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="solution" type="tns:solution"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="solution">
+    <xs:sequence>
+      <xs:element name="aid" type="xs:long"/>
+      <xs:element minOccurs="0" name="attachments" type="tns:attachments"/>
+      <xs:element minOccurs="0" name="creDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="modDate" type="xs:dateTime"/>
+      <xs:element name="pid" type="xs:long"/>
+      <xs:element name="sid" type="xs:long"/>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getDeclinedSolutionsForProblem">
+    <xs:sequence>
+      <xs:element name="pid" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getDeclinedSolutionsForProblemResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="solutions" type="tns:solutions"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="declineSolution">
+    <xs:sequence>
+      <xs:element name="sid" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="declineSolutionResponse">
+    <xs:sequence>
+      <xs:element name="declined" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSolutionById">
+    <xs:sequence>
+      <xs:element name="sid" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSolutionByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="solution" type="tns:solution"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTotalAcceptedSolutionsForProblem">
+    <xs:sequence>
+      <xs:element name="pid" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTotalAcceptedSolutionsForProblemResponse">
+    <xs:sequence>
+      <xs:element name="total" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createSolution">
+    <xs:sequence>
+      <xs:element name="aid" type="xs:long"/>
+      <xs:element name="pid" type="xs:long"/>
+      <xs:element minOccurs="0" name="attachments" type="tns:attachments"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createSolutionResponse">
+    <xs:sequence>
+      <xs:element name="sid" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPendingSolutionsForProblem">
+    <xs:sequence>
+      <xs:element name="pid" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPendingSolutionsForProblemResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="solutions" type="tns:solutions"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAcceptedSolutionsForProblem">
+    <xs:sequence>
+      <xs:element name="pid" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAcceptedSolutionsForProblemResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="solutions" type="tns:solutions"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTotalPendingSolutionsForProblem">
+    <xs:sequence>
+      <xs:element name="pid" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTotalPendingSolutionsForProblemResponse">
+    <xs:sequence>
+      <xs:element name="total" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceException" type="tns:ServiceException"/>
+  <xs:complexType name="ServiceException">
+    <xs:sequence/>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="updateSolution">
+    <wsdl:part name="parameters" element="tns:updateSolution">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acceptSolutionResponse">
+    <wsdl:part name="parameters" element="tns:acceptSolutionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acceptSolution">
+    <wsdl:part name="parameters" element="tns:acceptSolution">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createSolutionResponse">
+    <wsdl:part name="parameters" element="tns:createSolutionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateSolutionResponse">
+    <wsdl:part name="parameters" element="tns:updateSolutionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTotalAcceptedSolutionsForProblemResponse">
+    <wsdl:part name="parameters" element="tns:getTotalAcceptedSolutionsForProblemResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTotalPendingSolutionsForProblemResponse">
+    <wsdl:part name="parameters" element="tns:getTotalPendingSolutionsForProblemResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findSolutionsForProblem">
+    <wsdl:part name="parameters" element="tns:findSolutionsForProblem">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="declineSolution">
+    <wsdl:part name="parameters" element="tns:declineSolution">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSolutionByIdResponse">
+    <wsdl:part name="parameters" element="tns:getSolutionByIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createSolution">
+    <wsdl:part name="parameters" element="tns:createSolution">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ServiceException">
+    <wsdl:part name="ServiceException" element="tns:ServiceException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findSolutionsForProblemResponse">
+    <wsdl:part name="parameters" element="tns:findSolutionsForProblemResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteSolution">
+    <wsdl:part name="parameters" element="tns:deleteSolution">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createAuthorResponse">
+    <wsdl:part name="parameters" element="tns:createAuthorResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTotalDeclinedSolutionsForProblem">
+    <wsdl:part name="parameters" element="tns:getTotalDeclinedSolutionsForProblem">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createAuthor">
+    <wsdl:part name="parameters" element="tns:createAuthor">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeclinedSolutionsForProblem">
+    <wsdl:part name="parameters" element="tns:getDeclinedSolutionsForProblem">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSolutionById">
+    <wsdl:part name="parameters" element="tns:getSolutionById">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTotalAcceptedSolutionsForProblem">
+    <wsdl:part name="parameters" element="tns:getTotalAcceptedSolutionsForProblem">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPendingSolutionsForProblem">
+    <wsdl:part name="parameters" element="tns:getPendingSolutionsForProblem">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTotalDeclinedSolutionsForProblemResponse">
+    <wsdl:part name="parameters" element="tns:getTotalDeclinedSolutionsForProblemResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAcceptedSolutionsForProblem">
+    <wsdl:part name="parameters" element="tns:getAcceptedSolutionsForProblem">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAcceptedSolutionsForProblemResponse">
+    <wsdl:part name="parameters" element="tns:getAcceptedSolutionsForProblemResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTotalPendingSolutionsForProblem">
+    <wsdl:part name="parameters" element="tns:getTotalPendingSolutionsForProblem">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="declineSolutionResponse">
+    <wsdl:part name="parameters" element="tns:declineSolutionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeclinedSolutionsForProblemResponse">
+    <wsdl:part name="parameters" element="tns:getDeclinedSolutionsForProblemResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPendingSolutionsForProblemResponse">
+    <wsdl:part name="parameters" element="tns:getPendingSolutionsForProblemResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteSolutionResponse">
+    <wsdl:part name="parameters" element="tns:deleteSolutionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SolutionService">
+    <wsdl:operation name="updateSolution">
+      <wsdl:input name="updateSolution" message="tns:updateSolution">
+    </wsdl:input>
+      <wsdl:output name="updateSolutionResponse" message="tns:updateSolutionResponse">
+    </wsdl:output>
+      <wsdl:fault name="ServiceException" message="tns:ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSolution">
+      <wsdl:input name="deleteSolution" message="tns:deleteSolution">
+    </wsdl:input>
+      <wsdl:output name="deleteSolutionResponse" message="tns:deleteSolutionResponse">
+    </wsdl:output>
+      <wsdl:fault name="ServiceException" message="tns:ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="acceptSolution">
+      <wsdl:input name="acceptSolution" message="tns:acceptSolution">
+    </wsdl:input>
+      <wsdl:output name="acceptSolutionResponse" message="tns:acceptSolutionResponse">
+    </wsdl:output>
+      <wsdl:fault name="ServiceException" message="tns:ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalDeclinedSolutionsForProblem">
+      <wsdl:input name="getTotalDeclinedSolutionsForProblem" message="tns:getTotalDeclinedSolutionsForProblem">
+    </wsdl:input>
+      <wsdl:output name="getTotalDeclinedSolutionsForProblemResponse" message="tns:getTotalDeclinedSolutionsForProblemResponse">
+    </wsdl:output>
+      <wsdl:fault name="ServiceException" message="tns:ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createAuthor">
+      <wsdl:input name="createAuthor" message="tns:createAuthor">
+    </wsdl:input>
+      <wsdl:output name="createAuthorResponse" message="tns:createAuthorResponse">
+    </wsdl:output>
+      <wsdl:fault name="ServiceException" message="tns:ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findSolutionsForProblem">
+      <wsdl:input name="findSolutionsForProblem" message="tns:findSolutionsForProblem">
+    </wsdl:input>
+      <wsdl:output name="findSolutionsForProblemResponse" message="tns:findSolutionsForProblemResponse">
+    </wsdl:output>
+      <wsdl:fault name="ServiceException" message="tns:ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDeclinedSolutionsForProblem">
+      <wsdl:input name="getDeclinedSolutionsForProblem" message="tns:getDeclinedSolutionsForProblem">
+    </wsdl:input>
+      <wsdl:output name="getDeclinedSolutionsForProblemResponse" message="tns:getDeclinedSolutionsForProblemResponse">
+    </wsdl:output>
+      <wsdl:fault name="ServiceException" message="tns:ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="declineSolution">
+      <wsdl:input name="declineSolution" message="tns:declineSolution">
+    </wsdl:input>
+      <wsdl:output name="declineSolutionResponse" message="tns:declineSolutionResponse">
+    </wsdl:output>
+      <wsdl:fault name="ServiceException" message="tns:ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSolutionById">
+      <wsdl:input name="getSolutionById" message="tns:getSolutionById">
+    </wsdl:input>
+      <wsdl:output name="getSolutionByIdResponse" message="tns:getSolutionByIdResponse">
+    </wsdl:output>
+      <wsdl:fault name="ServiceException" message="tns:ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalAcceptedSolutionsForProblem">
+      <wsdl:input name="getTotalAcceptedSolutionsForProblem" message="tns:getTotalAcceptedSolutionsForProblem">
+    </wsdl:input>
+      <wsdl:output name="getTotalAcceptedSolutionsForProblemResponse" message="tns:getTotalAcceptedSolutionsForProblemResponse">
+    </wsdl:output>
+      <wsdl:fault name="ServiceException" message="tns:ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createSolution">
+      <wsdl:input name="createSolution" message="tns:createSolution">
+    </wsdl:input>
+      <wsdl:output name="createSolutionResponse" message="tns:createSolutionResponse">
+    </wsdl:output>
+      <wsdl:fault name="ServiceException" message="tns:ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPendingSolutionsForProblem">
+      <wsdl:input name="getPendingSolutionsForProblem" message="tns:getPendingSolutionsForProblem">
+    </wsdl:input>
+      <wsdl:output name="getPendingSolutionsForProblemResponse" message="tns:getPendingSolutionsForProblemResponse">
+    </wsdl:output>
+      <wsdl:fault name="ServiceException" message="tns:ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAcceptedSolutionsForProblem">
+      <wsdl:input name="getAcceptedSolutionsForProblem" message="tns:getAcceptedSolutionsForProblem">
+    </wsdl:input>
+      <wsdl:output name="getAcceptedSolutionsForProblemResponse" message="tns:getAcceptedSolutionsForProblemResponse">
+    </wsdl:output>
+      <wsdl:fault name="ServiceException" message="tns:ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalPendingSolutionsForProblem">
+      <wsdl:input name="getTotalPendingSolutionsForProblem" message="tns:getTotalPendingSolutionsForProblem">
+    </wsdl:input>
+      <wsdl:output name="getTotalPendingSolutionsForProblemResponse" message="tns:getTotalPendingSolutionsForProblemResponse">
+    </wsdl:output>
+      <wsdl:fault name="ServiceException" message="tns:ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SolutionServiceServiceSoapBinding" type="tns:SolutionService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="updateSolution">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateSolution">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateSolutionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSolution">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteSolution">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteSolutionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="acceptSolution">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="acceptSolution">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="acceptSolutionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalDeclinedSolutionsForProblem">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTotalDeclinedSolutionsForProblem">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTotalDeclinedSolutionsForProblemResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createAuthor">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createAuthor">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createAuthorResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findSolutionsForProblem">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findSolutionsForProblem">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findSolutionsForProblemResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDeclinedSolutionsForProblem">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getDeclinedSolutionsForProblem">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDeclinedSolutionsForProblemResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="declineSolution">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="declineSolution">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="declineSolutionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSolutionById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSolutionById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSolutionByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalAcceptedSolutionsForProblem">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTotalAcceptedSolutionsForProblem">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTotalAcceptedSolutionsForProblemResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createSolution">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createSolution">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createSolutionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPendingSolutionsForProblem">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPendingSolutionsForProblem">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPendingSolutionsForProblemResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAcceptedSolutionsForProblem">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAcceptedSolutionsForProblem">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAcceptedSolutionsForProblemResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalPendingSolutionsForProblem">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTotalPendingSolutionsForProblem">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTotalPendingSolutionsForProblemResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SolutionServiceService">
+    <wsdl:port name="SolutionServicePort" binding="tns:SolutionServiceServiceSoapBinding">
+      <soap:address location="http://localhost:9090/SolutionServicePort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
