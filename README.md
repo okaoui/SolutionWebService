@@ -2,11 +2,11 @@ SOAP Web Service: SolutionService
 
 A backend web service for e-work application. It provides the following operations to e-work:
 
-  > Create solution
-  > Update solution
-  > Accept solution
-  > Decline solution
-  > Get solution
+  1. Create solution
+  2. Update solution
+  3. Accept solution
+  4. Decline solution
+  5. Get solution
 
 There are more operations, see here http://jaxws.developeinjava.com/solutionservice/services
 
