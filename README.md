@@ -1,6 +1,6 @@
 SOAP Web Service: SolutionService
 
-A working code for a SOAP service which supports a web application by providing certain operations: 
+A backend web service for e-work application. It provides the following operations to e-work:
 
   > Create solution
   > Update solution
@@ -10,6 +10,6 @@ A working code for a SOAP service which supports a web application by providing 
 
 There are more operations, see here http://jaxws.developeinjava.com/solutionservice/services
 
-Service Endpoint: http://jaxws.developeinjava.com/solutionservice/services/SolutionService
-Service WSDL: http://jaxws.developeinjava.com/solutionservice/services/SolutionService?wsdl
+Service Endpoint: http://www.developeinjava.com:8080/solutionservice-1.0/services/SolutionService
+Service WSDL: http://www.developeinjava.com:8080/solutionservice-1.0/services/SolutionService?wsdl
 
